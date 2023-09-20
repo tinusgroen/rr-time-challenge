@@ -1,0 +1,16 @@
+.money-pile {
+    width: 100px;
+    height: 100px;
+    background-color: #00cc00;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .money-pile:hover {
+    background-color: #00aa00;
+  }
