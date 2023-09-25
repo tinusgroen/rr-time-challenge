@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  font-size: 0;
+  text-align: center;
+  line-height: 50px;
+}
+
+.moneycontainer {
+  box-shadow: none;
+  height: calc(50px * 3);
+  width: calc(50px * 4);
+}
+
+.moneycolumn {
+  display: inline-flex;
+  width: 100px;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+}
