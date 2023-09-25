@@ -15,5 +15,5 @@
   display: inline-flex;
   width: 100px;
   flex-direction: row;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
 }
