@@ -8,8 +8,6 @@ function App() {
   const [numInstances, setNumInstances] = useState(0); // Initial number of instances
 const [date, setDate] = useState(new Date());
 
-
-
 useEffect(() => {
   const timer = setInterval(() => setDate(new Date()), 1000)
   return function cleanup() {
@@ -21,13 +19,22 @@ useEffect(() => {
 
 
   return (
-  <div className="App">
-    <AnotherPile instances={numInstances}/>
-    <br />
-    <AnotherPile instances={numInstances / 1.5}/>
-    <br />
-    <AnotherPile instances={numInstances / 2}/>
-  </div>
+    <header className="App-header">
+    <p>
+     R&R Time Challenge Template 😀
+    </p>
+    <div className="App">
+      <b>{date.toUTCString()}</b>
+      <AnotherPile instances={numInstances}/>
+      <br />
+      <AnotherPile instances={numInstances / 1.5}/>
+      <br />
+      <AnotherPile instances={numInstances / 2}/>
+   </div>
+  </header>
+
+
+
   );
 }
 
