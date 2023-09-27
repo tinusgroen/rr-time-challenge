@@ -1,11 +1,11 @@
 import './AnotherPile.css';
 
-export const AnotherPile = (props) => {
+export const AnotherPile = (props: { instances: number }) => {
 
   return (
     <div>
-      <figure className="moneycontainer">
-        <div className="moneycolumn">
+        <figure className="money-container">
+            <div className="money-column">
           {Array.from({ length: props.instances }, (_, index) => (
             <img
               key={index}

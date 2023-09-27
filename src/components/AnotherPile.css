@@ -1,12 +1,10 @@
-
-
-.moneycontainer {
+.money-container {
   box-shadow: none;
   height: calc(50px * 3);
   width: calc(50px * 4);
 }
 
-.moneycolumn {
+.money-column {
   display: inline-flex;
   width: 100px;
   flex-direction: row;
