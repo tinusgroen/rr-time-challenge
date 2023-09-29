@@ -1,9 +1,10 @@
 import './AnotherPile.css';
 
-export const AnotherPile = (props: { instances: number }) => {
+export const AnotherPile = (props: { instances: number, name: string }) => {
 
   return (
     <div>
+        <p className="name">{props.name}</p>
         <figure className="money-container">
             <div className="money-column">
           {Array.from({ length: props.instances }, (_, index) => (
