@@ -1,3 +1,4 @@
+/* AnotherPile.css */
 .name {
   display: flex;
   flex-direction: row;
@@ -5,16 +6,29 @@
   margin: 16px 4px 4px 4px;
 }
 
-.money-container {
-  box-shadow: none;
-  height: calc(50px * 3);
-  width: calc(50px * 4);
-  margin: 4px;
+.graph {
+  position: relative;
+  width: 100%; /* Set the width to 100% to span the whole page */
+  left: 0; /* Start from the left edge of the page */
 }
 
-.money-column {
-  display: inline-flex;
-  width: 100px;
-  flex-direction: row;
-  flex-wrap: wrap;
+.coin {
+  width: 20px;
+  height: 20px;
+  background-color: #f7d42c; /* Gold color */
+  border: 1px solid #d4ab00; /* Slightly darker border */
+  border-radius: 50%;
+  margin: 0 5px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px; /* Adjust the font size as needed */
+  font-weight: bold;
+  color: #000; /* Euro symbol color (black in this example) */
+}
+
+.coin::before {
+  content: "€"; /* Euro symbol */
+  color: #fff; /* Make Euro symbol a visible color (white in this example) */
 }

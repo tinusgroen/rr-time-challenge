@@ -38,15 +38,15 @@ function App() {
 
     return (
         <header className="App-header">
-            <p>Select current task:</p>
-            <StateSelection currentState={currentState} onStateChange={handleStateChange} />
             <div className="App">
+                <h1>Time is Money</h1>
+                <p>Select current task:</p>
+                <StateSelection currentState={currentState} onStateChange={handleStateChange} />
                 <b>{date.toLocaleString('en-US', { timeZone: 'Europe/Amsterdam' })}</b>
-                <div className="money-row">
-                    <AnotherPile name={"💩"} instances={secondsPooped} />
-                    <AnotherPile name={"😴"} instances={secondsSlept} />
-                    <AnotherPile name={"⚒️"} instances={secondsWorked} />
-                </div>
+
+                <AnotherPile name={"💩"} instances={secondsPooped} />
+                <AnotherPile name={"😴"} instances={secondsSlept} />
+                <AnotherPile name={"⚒️"} instances={secondsWorked} />
             </div>
         </header>
     );
