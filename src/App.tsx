@@ -3,6 +3,7 @@ import './App.css';
 import { AnotherPile } from './components/AnotherPile/AnotherPile';
 import { States } from "./enums/states";
 import { StateSelection } from "./components/StateSelection/StateSelection";
+import LottieAnimation from "./components/LottieAnimation/LottieAnimation";
 
 function App() {
     const [currentState, setCurrentState] = useState(States.sleeping);
@@ -39,14 +40,17 @@ function App() {
     return (
         <header className="App-header">
             <div className="App">
-                <h1>Time is Money</h1>
+                <div className="title">
+                    <LottieAnimation/>
+                    <h1>Time is Money</h1>
+                </div>
                 <p>Select current task:</p>
                 <StateSelection currentState={currentState} onStateChange={handleStateChange} />
                 <b>{date.toLocaleString('en-US', { timeZone: 'Europe/Amsterdam' })}</b>
 
-                <AnotherPile name={"💩"} instances={secondsPooped} />
-                <AnotherPile name={"😴"} instances={secondsSlept} />
-                <AnotherPile name={"⚒️"} instances={secondsWorked} />
+                <AnotherPile name={"💩 Pooping on company time"} instances={secondsPooped} />
+                <AnotherPile name={"😴 Sleeping like a lazy bum"} instances={secondsSlept} />
+                <AnotherPile name={"⚒️ Working like a slave"} instances={secondsWorked} />
             </div>
         </header>
     );

@@ -1,4 +1,10 @@
-/* AnotherPile.css */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  justify-content: center;
+}
+
 .name {
   display: flex;
   flex-direction: row;
@@ -6,26 +12,28 @@
   margin: 16px 4px 4px 4px;
 }
 
-.graph {
-  position: relative;
-  width: 100%; /* Set the width to 100% to span the whole page */
-  left: 0; /* Start from the left edge of the page */
+.pile {
+  display: flex;
+  flex-wrap: wrap; /* Allow coins to wrap to the next line */
+  justify-content: center; /* Center coins horizontally */
+  align-items: center; /* Center coins vertically */
+  margin: 8px; /* Margin around the pile */
+  max-width: 100%; /* Ensure the pile doesn't exceed its container */
 }
 
 .coin {
-  width: 20px;
-  height: 20px;
+  width: 16px; /* Make coins smaller */
+  height: 16px; /* Make coins smaller */
   background-color: #f7d42c; /* Gold color */
   border: 1px solid #d4ab00; /* Slightly darker border */
   border-radius: 50%;
-  margin: 0 5px;
-  position: relative;
+  margin: 2px; /* Reduce the margin between coins */
+  font-size: 10px; /* Adjust the font size as needed */
+  font-weight: bold;
+  color: #000; /* Coin text color (black in this example) */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px; /* Adjust the font size as needed */
-  font-weight: bold;
-  color: #000; /* Euro symbol color (black in this example) */
 }
 
 .coin::before {

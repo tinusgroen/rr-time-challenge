@@ -12,9 +12,9 @@ export const StateSelection = (props: {
     return (
         <div>
             <div className="button-group">
-                <button type="button" onClick={() => handleClick(States.pooping)}>Pooping</button>
-                <button type="button" onClick={() => handleClick(States.sleeping)}>Sleeping</button>
-                <button type="button" onClick={() => handleClick(States.working)}>Working</button>
+                <button type="button" onClick={() => handleClick(States.pooping)}>💩</button>
+                <button type="button" onClick={() => handleClick(States.sleeping)}>😴</button>
+                <button type="button" onClick={() => handleClick(States.working)}>⚒️</button>
             </div>
         </div>
     );
