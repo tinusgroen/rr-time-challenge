@@ -10,6 +10,7 @@ function App() {
     const [secondsPooped, setPoopOnCompanyTime] = useState(0);
     const [secondsWorked, setWorkedTime] = useState(0);
     const [secondsSlept, setSleptTime] = useState(0);
+    const [dateMultiplier, setDateMultiplier] = useState(1); // Initial multiplier is 1 (normal speed)
     const [date, setDate] = useState(new Date());
 
     const handleStateChange = (newState: States) => {
@@ -17,25 +18,39 @@ function App() {
     };
 
     useEffect(() => {
-        const timer = setInterval(() => setDate(new Date()), 1000);
+        const timer = setInterval(() => {
+            // Update the date based on the multiplier
+            setDate((prevDate) => {
+                const newDate = new Date(prevDate);
+                newDate.setSeconds(newDate.getSeconds() + 1 * dateMultiplier);
+                return newDate;
+            });
 
-        return () => {
-            clearInterval(timer);
+            // Update the time counters based on the multiplier
             switch (currentState) {
                 case States.sleeping:
-                    setSleptTime(secondsSlept + 1);
+                    setSleptTime((prevTime) => prevTime + 1 * dateMultiplier);
                     break;
                 case States.pooping:
-                    setPoopOnCompanyTime(secondsPooped + 1);
+                    setPoopOnCompanyTime((prevTime) => prevTime + 1 * dateMultiplier);
                     break;
                 case States.working:
-                    setWorkedTime(secondsWorked + 1);
+                    setWorkedTime((prevTime) => prevTime + 1 * dateMultiplier);
                     break;
                 default:
                     break;
             }
+        }, 1000 / dateMultiplier); // Adjusted interval based on multiplier
+
+        return () => {
+            clearInterval(timer);
         };
-    });
+    }, [currentState, dateMultiplier]);
+
+    // Function to change the date multiplier
+    const changeDateMultiplier = (multiplier: number) => {
+        setDateMultiplier(multiplier);
+    };
 
     return (
         <header className="App-header">
@@ -47,6 +62,14 @@ function App() {
                 <p>Select current task:</p>
                 <StateSelection currentState={currentState} onStateChange={handleStateChange} />
                 <b>{date.toLocaleString('en-US', { timeZone: 'Europe/Amsterdam' })}</b>
+
+                {/* Buttons to control date multiplier */}
+                <div className="button-group">
+                    <button className="button" onClick={() => changeDateMultiplier(1)}>Normal Speed</button>
+                    <button className="button" onClick={() => changeDateMultiplier(2)}>2x Speed</button>
+                    <button className="button" onClick={() => changeDateMultiplier(10)}>10x Speed</button>
+                </div>
+
 
                 <AnotherPile name={"💩 Pooping on company time"} instances={secondsPooped} />
                 <AnotherPile name={"😴 Sleeping like a lazy bum"} instances={secondsSlept} />
