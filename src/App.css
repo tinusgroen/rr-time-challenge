@@ -2,10 +2,15 @@
   text-align: center;
 }
 
-.title {
+.header {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
 }
 
 .App-header {
@@ -47,5 +52,11 @@
 
 .button-group button:hover {
   background-color: #0056b3;
+}
+
+.investment {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 

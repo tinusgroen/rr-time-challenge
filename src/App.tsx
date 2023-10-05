@@ -4,13 +4,14 @@ import { AnotherPile } from './components/AnotherPile/AnotherPile';
 import { States } from "./enums/states";
 import { StateSelection } from "./components/StateSelection/StateSelection";
 import LottieAnimation from "./components/LottieAnimation/LottieAnimation";
+import { Investments } from "./components/Investments/Investments";
 
 function App() {
     const [currentState, setCurrentState] = useState(States.sleeping);
     const [secondsPooped, setPoopOnCompanyTime] = useState(0);
     const [secondsWorked, setWorkedTime] = useState(0);
     const [secondsSlept, setSleptTime] = useState(0);
-    const [dateMultiplier, setDateMultiplier] = useState(1); // Initial multiplier is 1 (normal speed)
+    const [dateMultiplier, setDateMultiplier] = useState(1);
     const [date, setDate] = useState(new Date());
 
     const handleStateChange = (newState: States) => {
@@ -22,20 +23,20 @@ function App() {
             // Update the date based on the multiplier
             setDate((prevDate) => {
                 const newDate = new Date(prevDate);
-                newDate.setSeconds(newDate.getSeconds() + 1 * dateMultiplier);
+                newDate.setSeconds(newDate.getSeconds() + dateMultiplier);
                 return newDate;
             });
 
             // Update the time counters based on the multiplier
             switch (currentState) {
                 case States.sleeping:
-                    setSleptTime((prevTime) => prevTime + 1 * dateMultiplier);
+                    setSleptTime((prevTime) => prevTime + dateMultiplier);
                     break;
                 case States.pooping:
-                    setPoopOnCompanyTime((prevTime) => prevTime + 1 * dateMultiplier);
+                    setPoopOnCompanyTime((prevTime) => prevTime + dateMultiplier);
                     break;
                 case States.working:
-                    setWorkedTime((prevTime) => prevTime + 1 * dateMultiplier);
+                    setWorkedTime((prevTime) => prevTime + dateMultiplier);
                     break;
                 default:
                     break;
@@ -55,21 +56,24 @@ function App() {
     return (
         <header className="App-header">
             <div className="App">
-                <div className="title">
+                <div className="header">
                     <LottieAnimation/>
-                    <h1>Time is Money</h1>
+                    <div className="title">
+                        <h1>Time is Money</h1>
+                        <div className="investment">
+                            <Investments piles={{career: secondsWorked, health: secondsSlept + secondsPooped}}/>
+                        </div>
+                    </div>
                 </div>
                 <p>Select current task:</p>
                 <StateSelection currentState={currentState} onStateChange={handleStateChange} />
                 <b>{date.toLocaleString('en-US', { timeZone: 'Europe/Amsterdam' })}</b>
 
-                {/* Buttons to control date multiplier */}
                 <div className="button-group">
                     <button className="button" onClick={() => changeDateMultiplier(1)}>Normal Speed</button>
                     <button className="button" onClick={() => changeDateMultiplier(2)}>2x Speed</button>
                     <button className="button" onClick={() => changeDateMultiplier(10)}>10x Speed</button>
                 </div>
-
 
                 <AnotherPile name={"💩 Pooping on company time"} instances={secondsPooped} />
                 <AnotherPile name={"😴 Sleeping like a lazy bum"} instances={secondsSlept} />
