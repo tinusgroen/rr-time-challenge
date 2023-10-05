@@ -3,7 +3,15 @@ import lottie from 'lottie-web';
 import animationData from "./pomonies.json";
 import "./PoMonies.css"
 
-function PoMonies() {
+export const PoMonies = (props: { showFullWidth: boolean }) => {
+    function shouldShowFullWidth(fullWidth: boolean): string {
+        if (fullWidth) {
+            return "overlay";
+        } else {
+            return "overlay-full";
+        }
+    }
+
     useEffect(() => {
         const container = document.getElementById('pomonies-container') as Element; // Use type assertion
 
@@ -22,7 +30,7 @@ function PoMonies() {
     }, []);
 
     return (
-        <div id="pomonies-container" className="overlay"></div>
+        <div id="pomonies-container" className={shouldShowFullWidth(props.showFullWidth)}></div>
     );
 }
 

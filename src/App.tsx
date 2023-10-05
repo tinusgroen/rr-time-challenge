@@ -13,7 +13,10 @@ function App() {
     const [secondsWorked, setWorkedTime] = useState(0);
     const [secondsSlept, setSleptTime] = useState(0);
     const [dateMultiplier, setDateMultiplier] = useState(1);
+    const [showFullWidth, setShowFullWidth] = useState(false);
     const [date, setDate] = useState(new Date());
+
+    console.log({fullWidth: showFullWidth});
 
     const handleStateChange = (newState: States) => {
         setCurrentState(newState);
@@ -55,14 +58,15 @@ function App() {
     };
 
     const showPoMoniesOverlay = () => {
-        
+        console.log({fullWidth: showFullWidth})
+        setShowFullWidth(true);
     }
 
     return (
         <header className="App-header">
             <div className="App">
                 <div className="header">
-                    <PoMonies/>
+                    <PoMonies showFullWidth={showFullWidth}/>
                     <LottieAnimation/>
                     <div className="title">
                         <h1>Time is Money</h1>
