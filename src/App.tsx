@@ -12,15 +12,23 @@ function App() {
     const [secondsPooped, setPoopOnCompanyTime] = useState(0);
     const [secondsWorked, setWorkedTime] = useState(0);
     const [secondsSlept, setSleptTime] = useState(0);
+    const [pOEnabled, setPOEnabled] = useState(false);
     const [dateMultiplier, setDateMultiplier] = useState(1);
     const [showFullWidth, setShowFullWidth] = useState(false);
     const [date, setDate] = useState(new Date());
 
-    console.log({fullWidth: showFullWidth});
-
     const handleStateChange = (newState: States) => {
         setCurrentState(newState);
     };
+
+    const changeDateMultiplier = (multiplier: number) => {
+        setDateMultiplier(multiplier);
+    };
+
+    const showPoMoniesOverlay = () => {
+        setShowFullWidth(true);
+        setPOEnabled(true);
+    }
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -52,17 +60,9 @@ function App() {
         };
     }, [currentState, dateMultiplier]);
 
-    // Function to change the date multiplier
-    const changeDateMultiplier = (multiplier: number) => {
-        setDateMultiplier(multiplier);
-    };
-
-    const showPoMoniesOverlay = () => {
-        setShowFullWidth(true);
-    }
-
     return (
         <header className="App-header">
+            {pOEnabled && <AnotherPile name={""} instances={5000}/>}
             <div className="App">
                 <div className="header">
                     <div className={showFullWidth ? "pomonies-display" : "pomonies-hide"}>
