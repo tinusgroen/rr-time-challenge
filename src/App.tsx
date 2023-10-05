@@ -5,6 +5,7 @@ import { States } from "./enums/states";
 import { StateSelection } from "./components/StateSelection/StateSelection";
 import LottieAnimation from "./components/LottieAnimation/LottieAnimation";
 import { Investments } from "./components/Investments/Investments";
+import PoMonies from "./components/PoMonies/PoMonies"
 
 function App() {
     const [currentState, setCurrentState] = useState(States.sleeping);
@@ -53,10 +54,15 @@ function App() {
         setDateMultiplier(multiplier);
     };
 
+    const showPoMoniesOverlay = () => {
+        
+    }
+
     return (
         <header className="App-header">
             <div className="App">
                 <div className="header">
+                    <PoMonies/>
                     <LottieAnimation/>
                     <div className="title">
                         <h1>Time is Money</h1>
@@ -73,6 +79,7 @@ function App() {
                     <button className="button" onClick={() => changeDateMultiplier(1)}>Normal Speed</button>
                     <button className="button" onClick={() => changeDateMultiplier(2)}>2x Speed</button>
                     <button className="button" onClick={() => changeDateMultiplier(10)}>10x Speed</button>
+                    <button className="button" onClick={() => showPoMoniesOverlay()}>PO Mode</button>
                 </div>
 
                 <AnotherPile name={"💩 Pooping on company time"} instances={secondsPooped} />
