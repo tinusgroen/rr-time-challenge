@@ -4,13 +4,6 @@ import animationData from "./pomonies.json";
 import "./PoMonies.css"
 
 export const PoMonies = (props: { showFullWidth: boolean }) => {
-    function shouldShowFullWidth(fullWidth: boolean): string {
-        if (fullWidth) {
-            return "overlay";
-        } else {
-            return "overlay-full";
-        }
-    }
 
     useEffect(() => {
         const container = document.getElementById('pomonies-container') as Element; // Use type assertion
@@ -30,7 +23,7 @@ export const PoMonies = (props: { showFullWidth: boolean }) => {
     }, []);
 
     return (
-        <div id="pomonies-container" className={shouldShowFullWidth(props.showFullWidth)}></div>
+        <div id="pomonies-container" className={props.showFullWidth ? "overlay" : "overlay-full"}></div>
     );
 }
 
