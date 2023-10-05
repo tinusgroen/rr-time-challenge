@@ -60,3 +60,10 @@
   justify-content: center;
 }
 
+.pomonies-hide {
+  display: none;
+}
+
+.pomonies-display {
+  display: flex;
+}

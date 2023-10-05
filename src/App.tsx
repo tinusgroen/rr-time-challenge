@@ -58,7 +58,6 @@ function App() {
     };
 
     const showPoMoniesOverlay = () => {
-        console.log({fullWidth: showFullWidth})
         setShowFullWidth(true);
     }
 
@@ -66,7 +65,9 @@ function App() {
         <header className="App-header">
             <div className="App">
                 <div className="header">
-                    <PoMonies showFullWidth={showFullWidth}/>
+                    <div className={showFullWidth ? "pomonies-display" : "pomonies-hide"}>
+                        <PoMonies />
+                    </div>
                     <LottieAnimation/>
                     <div className="title">
                         <h1>Time is Money</h1>
